@@ -1,0 +1,60 @@
+// 这是模态框的scss样式
+.modal {
+    @include position(fixed);
+    z-index: 10;
+    transition: all .5s;
+    // 遮罩层样式
+    .mask {
+        @include position(fixed);
+        background-color: $colorI;
+        opacity: 0.6;
+    }
+    // 模态框样式
+    .modal-dialog {
+        @include position(absolute, 40%, 50%, 660px, auto);
+        background-color: $colorG;
+        transform: translate(-50%, -50%);
+        // 模态框头部样式
+        .modal-header {
+            height: 60px;
+            background-color: $colorJ;
+            padding: 0 25px;
+            line-height: 60px;
+            font-size: $colorI;
+            .icon-close {
+                @include positionImg(absolute, 23px, 25px, 14px, 14px, '/imgs/icon-close.png');
+                transition: transform .3s;
+                &:hover {
+                    transform: scale(1.5);
+                }
+            }
+        }
+        // 模态框主体样式
+        .modal-body {
+            // padding: 42px 40px 54px;
+            padding: 40px 40px;
+            font-size: 14px;
+        }
+        // 模态框底部样式
+        .modal-footer {
+            height: 82px;
+            line-height: 82px;
+            text-align: center;
+            background-color: $colorJ;
+        }
+    }
+    // 给整个模态框添加样式-利用vue提供的动画钩子实现
+    // 进入动画的样式
+    &.slide-enter-active {
+        top: 0;
+    }
+    // 离开动画的样式
+    // 官方提供的最后一个钩子v-leave-to是结束动画回到最初
+    // 这里最开始第二行代码引入的方法中top的默认值就是0，所以可以省略该方法
+    &.slide-leave-active {
+        top: -100px;
+    }
+    &.slide-enter {
+        top: -100%;
+    }
+}

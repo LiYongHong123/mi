@@ -1,0 +1,71 @@
+// 这里设置通用css文件
+// 版心样式
+@import './mixin.scss';
+.container {
+    width: 1226px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+// logo
+// Logo的CSS样式
+.header-logo {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    background-color: #ff6600;
+    a {
+        display: inline-block;
+        // width: 110px;
+        width: 55px;
+        height: 55px;
+        overflow: hidden;
+        &:before {
+            content: "";
+            @include bgImg(55px, 55px, "/imgs/mi-logo.png", 55px);
+            transition: margin 0.2s;
+        }
+        &:after {
+            content: "";
+            @include bgImg(55px, 55px, "/imgs/mi-home.png", 55px);
+        }
+        &:hover::before {
+            margin-left: -55px;
+            transition: margin 0.2s;
+        }
+    }
+}
+
+// 链接模块下的图片大小和链接模块同样大小
+a {
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+input {
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+// 左浮动和右浮动和清楚浮动
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
